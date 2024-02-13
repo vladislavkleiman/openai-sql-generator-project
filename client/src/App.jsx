@@ -13,13 +13,16 @@ export default function App() {
   };
 
   const generateQuery = async () => {
-    const response = await fetch("http://localhost:8000/api/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ queryDescription: userPrompt }),
-    });
+    const response = await fetch(
+      "https://sql-generator-gqqz.onrender.com/api/generate",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ queryDescription: userPrompt }),
+      }
+    );
 
     const data = await response.json();
     return data.sqlQuery.trim();
